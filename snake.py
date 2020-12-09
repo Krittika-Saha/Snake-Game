@@ -12,6 +12,7 @@ class Snake():
     self.color = color
 
     self.segments = []
+    
   
     x = 0
     for i in range(length):
@@ -21,6 +22,8 @@ class Snake():
       new_segment.goto(x=x, y=0)
       self.segments.append(new_segment)
       x -= 20
+
+    self.head = self.segments[0]
 
   def move(self):
     for seg_num in range(len(self.segments) - 1, 0, -1):
