@@ -35,6 +35,7 @@ while game_is_on:
     food.refresh()
     snake.extend()
     scoreboard.increase_score()
+    scoreboard.write_high_score()
     
   #Detect collision with wall
 
