@@ -6,7 +6,6 @@ class Scoreboard(Turtle):
     super().__init__()
     self.score = 0
     self.color('white')
-    self.high_score = self.add_high_score()
     self.hideturtle()
     self.up()
     self.goto(-100, 270)
@@ -28,22 +27,19 @@ class Scoreboard(Turtle):
     self.write(f"High score: {self.high_score}", align='center',font=("Helvetica", 12, "bold"))
 
   def add_high_score(self):
-    file = open('high_score.txt', 'r+')
+    self.file = open('high_score.txt', 'r+')
     all_scores = []
-    for score in file:
+    for score in self.file:
       score_int = int(score[:-1])
       all_scores.append(score_int)
     all_scores.append(self.score)
-    high_scores = max(all_scores)
-    if self.high_score not in file:
-      file.write(f"{self.high_score}\n")
-    file.close()
-    return self.high_score
-
-
-
-
-
-  
-
-  
+    self.high_score = max(all_scores)
+    
+  def add_score_to_file(self):
+    high_score_str = f"{self.high_score}\n"
+    if high_score_str not in self.file:
+      self.file.write(high_score_str)
+      self.file.close()
+    else:
+      self.file.close()
+    self.file.close()

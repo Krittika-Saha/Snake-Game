@@ -49,4 +49,5 @@ while game_is_on:
       game_is_on == False
       screboard.game_over()
 
+scoreboard.add_score_to_file()
 screen.exitonclick()
